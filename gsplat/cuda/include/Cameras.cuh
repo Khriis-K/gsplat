@@ -23,6 +23,10 @@
 #include <algorithm>
 #include <array>
 #include <cmath>
+// ::isfinite below is CUDA's global overload in device code. Host-only g++ builds
+// (the .cpp files that include this header) get it from <math.h>, which puts
+// std::isfinite in the global namespace; <cmath> alone doesn't.
+#include <math.h>
 #include <limits>
 #include <type_traits>
 #include <cuda_runtime.h>
